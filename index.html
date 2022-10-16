@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Prenotazioni Albergo Plai</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <script src="js/myScript.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="icon" href="img/logo/logo.png">
+
+</head>
+<body class="bg-dark">
+<div class="navbar navbar-dark bg-dark">
+
+    <span class="navbar-brand mb-0 h1"><img src="img/logo/logo.png" width="90" height="40" class="d-inline-block"></span>
+</div>
+
+<div id="home" class="bg-dark bg-opacity-25 p-3 container-fluid">
+    <div id="container_extern" class="container bg-dark text-center p-3 rounded-1 m-auto bg-opacity-75">
+        <div id="div_form" class="pt-1 container">
+            <h3 class="text-light">Inserisci qui i tuoi dati</h3>
+            <form action="#" id="form_pren" class="m-auto form-floating w-50 text-light">
+                <h3 class="form-text">I tuoi dati personali</h3>
+                <div class="container m-auto p-1">
+                    <label class="p-1">
+                        Nome:
+                        <input type="text" name="nome" id="nome" class="form-control bg-dark border-0 text-light">
+                    </label>
+
+                    <label class="p-1">
+                        Cognome:
+                        <input type="text" name="cognome" id="cognome" class="form-control bg-dark border-0 text-light">
+                    </label>
+
+                    <label class="p-1">
+                        Città:
+                        <input type="text" name="città" id="cit" class="form-control bg-dark border-0 text-light">
+                    </label>
+
+                    <label class="p-1">
+                        Nazionalità:
+                        <input type="text" name="nazionalità" id="nazio" class="form-control bg-dark border-0 text-light">
+                    </label>
+
+                    <label class="p-1">
+                        Telefono:
+                        <input type="tel" name="telefono" id="numero" class="form-control bg-dark border-0 text-light" pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
+                    </label>
+
+                    <label class="p-1">
+                        Email:
+                        <input type="email" name="email" id="email" class="form-control bg-dark border-0 text-light">
+                    </label>
+
+                </div>
+
+                <div class="container m-auto p-1">
+                    <h3 class="form-text">I dati di prenotazione</h3>
+                    <label class="p-1">
+                        Camera:
+                        <select id="camera" name="camera" class="form-select bg-dark border-0 text-light">
+                            <option value="singola">singola</option>
+                            <option value="doppia">doppia</option>
+                            <option value="quadrupla">quadrupla</option>
+                            <option value="love">luna di miele</option>
+                        </select>
+                        <br>
+                    </label>
+
+                    <label class="p-1">
+                        Data di arrivo: <input type="date" name="arrivo" id="checkin" class="form-control bg-dark border-0 text-light">
+                        <br>
+                    </label>
+
+                    <label class="p-1">
+                        Data di partenza: <input type="date" name="partenza" id="checkout" class="form-control bg-dark border-0 text-light">
+                        <br>
+                    </label>
+                </div>
+
+
+                <input type="button" id="submit" value="Invia Prenotazione" class="btn btn-primary p-1">
+                <input type="button" id="print" value="Visualizza Prenotazioni" class="btn btn-primary p-1">
+            </form>
+        </div>
+    </div>
+
+    <div id="prenotazioni_box" class="container wrapper text-center p-1">
+
+    </div>
+</div>
+</body>
+</html>

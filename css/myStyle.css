@@ -1,0 +1,75 @@
+body{
+    background-image: url("../img/bg/bg.webp");
+}
+
+html,body{
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+.error {
+    color:red;
+}
+
+.dialog{
+    border-radius: 3px;
+    background-color: #0c63e4;
+}
+
+#prenotazioni_box{
+    position: relative;
+    width: 100%;
+
+}
+
+.ui-widget-overlay{
+    position: absolute;
+    height: 100%;
+}
+
+.ui-widget-content, .ui-dialog-title, .ui-dialog-titlebar, .ui-icon {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+    border: gray;
+    border-radius: 3px;
+    color: rgb(var(--bs-light-rgb));
+}
+
+.ui-corner-all{
+    border: none;
+}
+
+button.ui-button, .ui-widget-content .ui-state-default{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+button.ui-button, .ui-widget-content .ui-state-default:hover{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+div.ui-dialog-buttonpane .ui-button {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+#home{
+    height: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+.prenotazione {
+    width: fit-content;
+    height: fit-content;
+}
+
+.elimina{
+    justify-content: end;
+    width:100%;
+    height: fit-content;
+}
