@@ -73,3 +73,7 @@ div.ui-dialog-buttonpane .ui-button {
     width:100%;
     height: fit-content;
 }
+
+#ncamere {
+    width: 60px;
+}

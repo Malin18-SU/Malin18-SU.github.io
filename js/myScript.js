@@ -1,9 +1,9 @@
 $().ready(function() {
     let prenotazioni = [];
     let n_prenotazioni = 0;
+    let numero_camere = [5, 5, 5, 5];
     let current = $.datepicker.formatDate('yy-mm-dd', new Date());
     $('#checkin').attr("min", current);
-
     $('#checkin').change(function(){
         $('#checkout').attr("min", $('#checkin').val());
     })
@@ -31,6 +31,12 @@ $().ready(function() {
                 alarm = "Non sono presenti prenotazioni nel registro";
                 break;
 
+            case 410:   //errore: non sono presenti camere di quel tipo
+                console.log("code: " + code + ", error");
+                alarm = "Non sono più disponibili questo tipo di camere";
+                break;
+
+
             case 430:   //errore del form non compilato correttamente
                 console.log("code: " + code + ", error");
                 alarm = "Form non valido";
@@ -46,6 +52,10 @@ $().ready(function() {
     //click del form
     $('#submit').click(function() {
         if($('#form_pren').valid()){
+            if(numero_camere[$('#camera').val()-1] < 1){    //check del numerro di stanze
+                alert_check(410);
+                return false;
+            }
             $('#form_pren').submit();
             aggiungi_Prenotazione();
             alert_check(210);
@@ -91,11 +101,13 @@ $().ready(function() {
         this.nazionalita = $('#nazio').val();
         this.telefono = $('#numero').val();
         this.email = $('#email').val();
-        this.camera = $('#camera').val();
+        this.ncamere = $('#ncamere').val();
+        this.camera = $('#camera option:selected').text();
         this.checkin = $('#checkin').val();
         this.checkout = $('#checkout').val();
 
         n_prenotazioni++;
+        numero_camere[$('#camera').val()-1]-=this.ncamere;
 
         return this;
     }
@@ -150,7 +162,9 @@ $().ready(function() {
         //event.stopImmediatePropagation();
     })
 
-
+        $('#ncamere').change(function() {
+            $('#ncamere').attr('max', numero_camere[$('#camera').val()-1]);
+        })
 
         //stampa a schermo le prenotazioni registrate
         function printPrenotazioni(){
@@ -176,6 +190,7 @@ $().ready(function() {
                     "Nazionalità: " + prenotazioni[pren].nazionalita + "<br>" +
                     "Numero: " + prenotazioni[pren].telefono + "<br>" +
                     "Email: " + prenotazioni[pren].email + "<br>" +
+                    "Numero di camere: " + prenotazioni[pren].ncamere + "<br>" +
                     "Camera: " + prenotazioni[pren].camera + "<br>" +
                     "Check-in: " + prenotazioni[pren].checkin + "<br>" +
                     "Check-out: " + prenotazioni[pren].checkout);

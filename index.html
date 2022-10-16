@@ -44,6 +44,7 @@
                     <label class="p-1">
                         Nazionalità:
                         <input type="text" name="nazionalità" id="nazio" class="form-control bg-dark border-0 text-light">
+
                     </label>
 
                     <label class="p-1">
@@ -51,6 +52,7 @@
                         <input type="tel" name="telefono" id="numero" class="form-control bg-dark border-0 text-light" pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
                     </label>
 
+                    <br>
                     <label class="p-1">
                         Email:
                         <input type="email" name="email" id="email" class="form-control bg-dark border-0 text-light">
@@ -58,15 +60,20 @@
 
                 </div>
 
-                <div class="container m-auto p-1">
+                <div class="container m-1 p-1">
                     <h3 class="form-text">I dati di prenotazione</h3>
+                    <label class="p-1">
+                        Stanze:
+                        <input id="ncamere" type="number" value="1" min="1" class="form-control bg-dark border-0 text-light">
+                        <br>
+                    </label>
                     <label class="p-1">
                         Camera:
                         <select id="camera" name="camera" class="form-select bg-dark border-0 text-light">
-                            <option value="singola">singola</option>
-                            <option value="doppia">doppia</option>
-                            <option value="quadrupla">quadrupla</option>
-                            <option value="love">luna di miele</option>
+                            <option value="1">singola</option>
+                            <option value="2">doppia</option>
+                            <option value="3">quadrupla</option>
+                            <option value="4">luna di miele</option>
                         </select>
                         <br>
                     </label>
