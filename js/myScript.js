@@ -52,7 +52,7 @@ $().ready(function() {
     //click del form
     $('#submit').click(function() {
         if($('#form_pren').valid()){
-            if(numero_camere[$('#camera').val()-1] < 1){    //check del numerro di stanze
+            if(numero_camere[$('#camera').val()-1]-$('#ncamere').val() < 0){    //check del numero di stanze
                 alert_check(410);
                 return false;
             }
@@ -163,7 +163,7 @@ $().ready(function() {
     })
 
         $('#ncamere').change(function() {
-            $('#ncamere').attr('max', numero_camere[$('#camera').val()-1]);
+            $('#ncamere').attr('max', numero_camere[$('#camera').val()]);
         })
 
         //stampa a schermo le prenotazioni registrate
@@ -176,7 +176,7 @@ $().ready(function() {
             for(let pren in prenotazioni){  ///creazione dei div delle singole prenotazioni
                 let box = $("<div></div>");
                 $(box).addClass("prenotazione text-light bg-dark rounded-3 bg-opacity-75 p-1");
-                $(box).attr("id", pren);
+                $(box).attr("id", prenotazioni[pren].id);
 
                 $(box).append("<h2>Prenotazione n. " + (parseInt(pren) + 1) + "</h2>");
 
@@ -208,7 +208,28 @@ $().ready(function() {
 
     //elimina una prenotazione dall'id dato
     function elimina_Prenotazione(id){
-        prenotazioni.splice(id, 1);
+        let pren = prenotazioni.find((o) => {return o["id"] == id});
+        numero_camere[tipo_stanza(pren.camera)]+=parseInt(pren.ncamere);
+        prenotazioni.splice(prenotazioni.indexOf(pren), 1);
+    }
+
+    function tipo_stanza(stanza){
+        if(stanza === "Singola"){
+            return 0;
+        }
+
+        if(stanza === "Doppia"){
+            return 1;
+        }
+
+        if(stanza === "Quadrupla"){
+            return 2;
+        }
+
+        if(stanza === "Luna di miele"){
+            return 3;
+        }
+
     }
 }
 )
