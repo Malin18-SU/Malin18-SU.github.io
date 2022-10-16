@@ -59,7 +59,7 @@ $().ready(function() {
         $(alert).addClass("dialog");
         $(alert).text(msg);
         $(alert).dialog({
-            title: "Errore",
+            title: "Attenzione",
             draggable: false,
             resizable: false,
             autoOpen: false,
