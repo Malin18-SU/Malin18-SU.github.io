@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Paramouth</title>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/dark-hive/jquery-ui.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <script>
+        $(document).ready(function() {
+            $('#aggiunta').hide();
+            $('#playlist').hide();
+            $(document.body).hide().fadeIn("slow");
+            $('.Accordion').accordion({
+                active: false,
+                collapsible: true,
+                event: "mouseover"
+            });
+
+            $('.film-info').on("click", function() {
+                
+            })
+
+            $('.film').draggable({
+                stop: function(event, ui){
+                    $(this).animate({
+                        left:0,
+                        top:0
+                    });
+                    $(this).removeAttr("style");
+                }
+            });
+
+            $('#btn-catalogo').on("click", function() {
+                $('#catalogo').slideDown("slow");
+                $('#aggiunta').hide("fade");
+                $('#noleggio').hide("fade");
+                $('#playlist').hide("fade");
+
+                $('.Accordion').accordion({
+                    active: false
+                });
+            });
+
+            $('.Accordion').on("mouseout", function() {
+                $('.Accordion').not(this).accordion({
+                    active: false
+                });
+            })
+
+
+            $('#btn-playlist').on("click", function() {
+                $('#playlist').toggle("slideUp");
+                $('.Accordion').accordion({
+                    active: false
+                });
+            })
+
+            $('#btn-film').on("click", function() {
+                $('#catalogo').hide("fade");
+                $('.Accordion').accordion({
+                    active: false
+                });
+
+                $('#aggiunta').show("fade", 600);
+                $('#add').show("fade", 600);
+
+            })
+
+            $("#add-film").on("click", function (){
+                alert_("Film aggiunto al catalogo.");
+                $('#aggiunta').toggle("fade");
+                $('#catalogo').toggle("fade");
+            })
+
+            function alert_(msg) {
+                alert = $("<div></div>");
+                $(alert).addClass("dialog");
+                $(alert).text(msg);
+                $(alert).dialog({
+                    title: "Attenzione",
+                    draggable: false,
+                    resizable: false,
+                    autoOpen: false,
+                    modal: true,
+                    width: "25%",
+                    buttons: {
+                        "Ok" : function() {
+                            $(alert).dialog('close');
+                        }
+                    },
+                    show: {
+                        effect: "fade",
+                        duration: 800
+                    },
+                    hide: {
+                        effect: "clip",
+                        duration: 200
+                    }
+
+                });
+                $(alert).dialog('open');
+            }
+
+
+        })
+    </script>
+</head>
+<body class="bg-dark bg-gradient m-auto text-center">
+    <div class="navbar navbar-dark bg-dark pl-1 border-bottom border-primary sticky-top" id="navbar">
+        <p class="navbar-brand"> Paramouth</p>
+        <input id="btn-catalogo" type="button" value="Catalogo" class="btn text-light btn-primary bg-transparent btn-nav">
+        <input id="btn-film" type="button" value="Aggiungi Film" class="btn text-light btn-primary bg-transparent btn-nav">
+        <input id="btn-noleggio" type="button" value="Film Noleggiati" class="btn text-light btn-primary bg-transparent btn-nav">
+        <input id="btn-playlist" type="button" value="Playlist" class="btn text-light btn-primary bg-transparent btn-nav">
+        <div class="nav-fill"></div>
+    </div>
+
+    <div class="container-fluid">
+        <div id="catalogo" class="bg-dark bg-opacity-75 container-fluid text-light m-auto p-1">
+            <h2 class="text-start">Catalogo</h2>
+            <div id="film1" class="bg-dark m-auto p-3 rounded-1 container d-inline-block film ">
+                <div class="Accordion ">
+                    <img src="https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg" class="img-film border border-primary">
+                    <div class="bg-dark">
+                        <h3>Black Panther</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="film2" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+                <div class="Accordion">
+                    <img src="https://assets.mubicdn.net/images/notebook/post_images/31814/images-w1400.jpg" class="img-film border border-primary">
+
+
+                    <div>
+                        <h3>Jaws</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="film3" class="bg-dark m-auto p-3 rounded-1 container d-inline-block film">
+
+
+                <div class="Accordion">
+                    <img src="https://blog.printkeg.com/wp-content/uploads/2018/12/captain-marvel-movie-poster2.jpg" class="img-film border border-primary">
+
+
+                    <div>
+                        <h3>Captain Marvel</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="film4" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+
+
+                <div class="Accordion">
+                    <img src="https://th.bing.com/th/id/R.8889ac27a7a742b30b0b7eb5e595b6d1?rik=1RtdzMgRjd%2bL9Q&riu=http%3a%2f%2fgdj.graphicdesignjunction.com%2fwp-content%2fuploads%2f2012%2f05%2fmovie-poster-20.jpg&ehk=1TyHALX0ragAoIf9gh0HWhY%2blKaKVGcTbb1%2f664vcgM%3d&risl=&pid=ImgRaw&r=0" class="img-film border border-primary">
+
+
+                    <div>
+                        <h3>Battleship</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+                </div>
+            </div>
+
+            <div id="film5" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+
+
+                <div class="Accordion">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/62332132039857.566bcebd67c82.jpg" class="img-film border border-primary">
+
+                    <div>
+                        <h3>Special 26</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+                </div>
+            </div>
+
+            <div id="film6" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+
+
+                <div class="Accordion">
+                    <img src="https://th.bing.com/th/id/R.6c7a6e74bc0d693241f91b343049599f?rik=fGEnpHlCJ2pQ%2bA&riu=http%3a%2f%2fwww.graphicdesignjunction.com%2fwp-content%2fuploads%2f2012%2f03%2flarge%2fmovies-poster-13.jpg&ehk=txaov8UYTcd7INSngfm8FGHV%2bMCm22hG51wvvbOUY8M%3d&risl=&pid=ImgRaw&r=0" class="img-film border border-primary">
+
+                    <div>
+                        <h3>Wanderlust</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="film7" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+                <div class="Accordion">
+                    <img src="https://th.bing.com/th/id/R.c6e6a961e08540eec41025444f6c5c7e?rik=fLNv8UNBrGrKzg&riu=http%3a%2f%2fcafmp.com%2fwp-content%2fuploads%2f2012%2f12%2fThe-Avengers-America.jpg&ehk=bzttIpsnKniGQvKJzWaLMXOk7VRWwUfNJj%2bwVemmc3Q%3d&risl=&pid=ImgRaw&r=0" class="img-film border border-primary">
+
+                    <div>
+                        <h3>The Avengers</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="film8" class="bg-dark m-auto p-3 rounded-1 container  d-inline-block film">
+                <div class="Accordion">
+                    <img src="https://th.bing.com/th/id/R.a0bf07cdd253dfbb39e73caa57a9b5f1?rik=vUWd%2fXaEL6oNOw&riu=http%3a%2f%2fcafmp.com%2fwp-content%2fuploads%2f2016%2f04%2fAvatar.jpg&ehk=PHXd1ssk%2f3z%2bieqLij1ToRXB8%2bZYYxthB7cM8qDF4Dg%3d&risl=1&pid=ImgRaw&r=0" class="img-film border border-primary">
+
+                    <div>
+                        <h3>Avatar</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="film9" class="bg-dark m-auto p-3 rounded-1 container d-inline-block film">
+
+
+                <div class="Accordion">
+                    <img src="https://th.bing.com/th/id/R.9795d502c49777ecc97f63edb0e7a0a2?rik=zLhvY2AZLfkohQ&riu=http%3a%2f%2fgdj.graphicdesignjunction.com%2fwp-content%2fuploads%2f2012%2f10%2flarge%2fmovie%2bposters%2b39.jpg&ehk=veumK3K0VVazEmAui2p2zeDnVZzzk89AbNYEWpiNB8g%3d&risl=&pid=ImgRaw&r=0" class="img-film border border-primary">
+
+                    <div>
+                        <h3>Spider 3D</h3>
+                        <input type="button" value="Visualizza informazioni" class="btn btn-secondary film-info">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="aggiunta" class="container bg-dark text-light m-auto position-relative m-1">
+            <form id="add" class="container text-center form-group d-flex d-wrap flex-column w-25 p-3">
+                    <label class="form-label">
+                        <h5 class="form-text">Titolo:</h5>
+                        <input type="text" id="add_name" placeholder="Nome" class="form-control">
+                    </label>
+
+                    <label class="form-label">
+                        <h5 class="form-text">Attori: </h5>
+                        <input type="text" id="add_act" placeholder="Attori" class="form-control">
+                    </label>
+                    <label class="form-label">
+                        <h5 class="form-text">Trama: </h5>
+                        <textarea id="add_trama" placeholder="Trama" style="resize:none;" class="w-100 h-50 form-control"></textarea>
+                    </label>
+                    <input id="add-film" type="button" value="Invia" class="btn btn-primary">
+                </form>
+        </div>
+
+        <div id="noleggio"></div>
+        <div id="playlist" class="sticky-bottom container-fluid bg-dark text-light w-100 position-fixed">
+            <h1>playlist</h1>
+        </div>
+    </div>
+</body>
+</html>

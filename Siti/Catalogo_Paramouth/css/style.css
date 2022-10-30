@@ -1,0 +1,58 @@
+body{
+    font: 14px "Roboto Light";
+}
+
+.btn-nav:hover{
+    transition: 0.3s;
+    opacity: 0.1;
+}
+
+.btn-nav{
+    transition: 0.3s;
+}
+
+.ui-dialog{
+    position: fixed;
+}
+
+.ui-widget-overlay{
+    position: absolute;
+    height: 100%;
+}
+
+.ui-widget-content, .ui-dialog-title, .ui-dialog-titlebar, .ui-icon {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+    border: gray;
+    border-radius: 3px;
+    color: rgb(var(--bs-light-rgb));
+}
+
+.ui-corner-all{
+    border: none;
+}
+
+button.ui-button, .ui-widget-content .ui-state-default{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+button.ui-button, .ui-widget-content .ui-state-default:hover{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+div.ui-dialog-buttonpane .ui-button {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+
+.img-film {
+    width: 115px;
+    height: 170px;
+    object-fit: cover;
+}
+
+.film{
+    width: 15%;
+    height: 20%;
+    position: relative;
+}
