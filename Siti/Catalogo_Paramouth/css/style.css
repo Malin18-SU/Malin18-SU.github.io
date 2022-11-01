@@ -79,6 +79,7 @@ div.ui-dialog-buttonpane .ui-button {
 .info-window {
     margin: auto;
     position: absolute;
+    z-index: 100000;
 }
 
 .bg-cover {
