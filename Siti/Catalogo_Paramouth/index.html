@@ -22,9 +22,7 @@
             setAccordion(".Accordion")
             setDraggable(".film")
 
-            $('.film-info').on("click", function() {
-                info_dialog($(this).closest(".film"))
-            })
+
 
             //impostazione drop del catalogo per spostare i film dalla playlist al catalogo
             $('#catalogo').droppable({
@@ -105,6 +103,10 @@
 
             $(document).on("click", "#dialog_close", function(){
                 $(".info-window").remove()
+            })
+
+            $(document).on("click", '.film-info', function() {
+                info_dialog($(this).closest(".film"))
             })
 
             function Datafilm(){
