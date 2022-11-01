@@ -1,0 +1,88 @@
+body{
+    font: 14px "Roboto Light";
+    height: 100%;
+    min-height: 100vh;
+}
+
+.btn-nav:hover{
+    transition: 0.3s;
+    opacity: 0.1;
+}
+
+.btn-nav{
+    transition: 0.3s;
+}
+
+.ui-dialog{
+    position: absolute;
+    border-radius: 3px;
+    top: -100px;
+}
+
+.ui-widget-overlay{
+    position: absolute;
+    height: 100%;
+}
+
+.ui-widget-content, .ui-dialog-title, .ui-dialog-titlebar, .ui-icon {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+    border: gray;
+    border-radius: 3px;
+    color: rgb(var(--bs-light-rgb));
+}
+
+.ui-corner-all{
+    border: none;
+}
+
+button.ui-button, .ui-widget-content .ui-state-default{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+button.ui-button, .ui-widget-content .ui-state-default:hover{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+div.ui-dialog-buttonpane .ui-button {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+
+.img-film {
+    width: 115px;
+    height: 170px;
+    object-fit: cover;
+}
+
+.film{
+    width: 15%;
+    height: 20%;
+    position: relative;
+    max-width: 15%;
+    max-height: 20%;
+}
+
+.container-playlist {
+    border-style: dashed;
+    width:155px;
+    height:220px;
+}
+
+.film-playlist {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -10px;
+}
+
+.info-window {
+    margin: auto;
+    position: absolute;
+    z-index: 100000;
+}
+
+.bg-cover {
+    min-width: 100%;
+    min-height: 100%;
+}
