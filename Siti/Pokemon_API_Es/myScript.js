@@ -5,6 +5,8 @@ $(document).ready(function(){
         "flying": "#A98FF3", "psychic": "#F95587", "bug": "#A6B91A", "rock": "#B6A136", "ghost": "#735797", "dragon": "#6F35FC", "dark": "#705746", "steel": "#B7B7CE", "fairy": "#D685AD"};
 
 
+    $("#pokemon_content").hide()
+    $(".container-fight").hide()
     names()
     setDroppable("#pokefight_container1")
     setDroppable("#pokefight_container2")
@@ -12,6 +14,11 @@ $(document).ready(function(){
     $("#btn-fight").on("click", function(){
         if(check_fight_conditions()){
             animation_start_fight()
+            $(this).parent().css({
+                background: "url('/images/fight/" + $(this).parent().find("#pokefight_container1").find("").text().toLowerCase() + ".jpg') no-repeat center center fixed",
+                backgroundSize: "cover",
+                borderRadius: "8px"
+            })
         }
 
     })
@@ -21,6 +28,7 @@ $(document).ready(function(){
     })
 
     $("#pokemon_name").on("change", function(){
+        $("#pokemon_content").show()
         let name = $("#pokemon_name").val();
         name = name.substr(0, 1).toLowerCase() + name.substr(1)
         $("#pokemon_img").attr("src", "https://projectpokemon.org/images/normal-sprite/" + name + ".gif")
@@ -34,18 +42,20 @@ $(document).ready(function(){
                 console.log(data)
                 $("#pokemon_abilities").empty()
                 $("#pokemon_types").empty()
+                $("#pokemon_stats_name").empty()
                 $("#pokemon_stats").empty()
                 data.abilities.forEach(function(item, index){
-                    $("#pokemon_abilities").append("ability " + (index+1) + ": " + item.ability.name + "<br>")
+                    $("#pokemon_abilities").append("<td>" + item.ability.name + "</td>")
                 })
 
                 data.types.forEach(function(item, index){
-                    $("#pokemon_types").append(item.type.name + "<br>")
+                    $("#pokemon_types").append("<td>" + item.type.name + "</td>")
                     color_type(colors[item.type.name])
                 })
 
                 data.stats.forEach(function(item, index){
-                    $("#pokemon_stats").append(item.stat.name + ": " + item.base_stat + "<br>")
+                    $("#pokemon_stats_name").append("<th>" + item.stat.name + "</th>")
+                    $("#pokemon_stats").append($("<td>" + item.base_stat + "</td>").attr("id", item.stat.name))
                 })
 
                 setDraggable("#pokemon_card")
@@ -57,6 +67,9 @@ $(document).ready(function(){
         $(obj).droppable({
             accepts: ".pokemon_card",
             drop: function(event, ui){
+                if($.trim($(this).html() == 0))
+                    $(this).empty()
+
                 $(this).css({
                     backgroundColor: $(ui.draggable).css("backgroundColor")
                 })
@@ -71,6 +84,11 @@ $(document).ready(function(){
                 $($(this).find("#pokemon_img")).css({
                     transform: "scaleX(-1)"
                 })
+
+                $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
+                    "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
+                    "<div>HP  <div id='pokelife_1' class='progress-bar'></div></div>"))
+                setProgressbar("#pokelife_1", $(ui.draggable).find("#hp").text())
 
 
                 $(this).removeClass("border").css({
@@ -90,6 +108,24 @@ $(document).ready(function(){
     function setDraggable(obj){
         $(obj).draggable({
             revert: true
+        })
+    }
+
+    function setProgressbar(obj, max){
+        $(obj).children("div").addClass(".bg-success")
+        $(obj).progressbar({
+            max: max,
+            value: max-0.1,
+
+            change: function(){
+                if($(obj).val()/max*100 <=75){
+                    $(obj).children("div").addClass("bg-warning")
+                }
+
+                if($(obj).val()/max*100 <=25){
+                    $(obj).children("div").addClass("bg-danger")
+                }
+            }
         })
 
     }
