@@ -15,7 +15,7 @@ $(document).ready(function(){
         if(check_fight_conditions()){
             animation_start_fight()
             $(this).parent().css({
-                background: "url('/images/fight/" + $(this).parent().find("#pokefight_container1").find("").text().toLowerCase() + ".jpg') no-repeat center center fixed",
+                background: "url('/images/fight/" + $(this).parent().find("#pokefight_container1").attr("meta-type") + ".jpg') no-repeat center center fixed",
                 backgroundSize: "cover",
                 borderRadius: "8px"
             })
@@ -28,10 +28,32 @@ $(document).ready(function(){
     })
 
     $("#pokemon_name").on("change", function(){
+        $("#pokemon_abilities").empty()
+        $("#pokemon_types").empty()
+        $("#pokemon_stats").empty()
+        $("#pokemon_stats_name").empty()
         $("#pokemon_content").show()
+        $("#pokemon_card").css({
+            backgroundColor: "black"
+        })
+
+        if($("#pokemon_img").attr("src", "/images/404/error.gif")){
+            $("#pokemon_card").draggable({disabled: true})
+        }
+
+
+
         let name = $("#pokemon_name").val();
         name = name.substr(0, 1).toLowerCase() + name.substr(1)
+
         $("#pokemon_img").attr("src", "https://projectpokemon.org/images/normal-sprite/" + name + ".gif")
+
+        $("#pokemon_img").on("error", function(){
+            $("#pokemon_img").attr("src", "/images/404/error.gif").css({
+                width: "100%",
+                height: "100%"
+            })
+        })
 
 
         $.ajax({
@@ -63,6 +85,12 @@ $(document).ready(function(){
         });
     })
 
+    function color_type(color){
+        $("#pokemon_card").css({
+            backgroundColor: color
+        })
+    }
+
     function setDroppable(obj){
         $(obj).droppable({
             accepts: ".pokemon_card",
@@ -80,16 +108,23 @@ $(document).ready(function(){
                     objectFit: "contain"
                 }).appendTo(this)
 
-                if($(this).attr("id") == "pokefight_container1")
-                $($(this).find("#pokemon_img")).css({
-                    transform: "scaleX(-1)"
-                })
+                if($(this).attr("id") == "pokefight_container1"){
+                    $($(this).find("#pokemon_img")).css({
+                        transform: "scaleX(-1)"
+                    })
 
-                $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
-                    "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
-                    "<div>HP  <div id='pokelife_1' class='progress-bar'></div></div>"))
-                setProgressbar("#pokelife_1", $(ui.draggable).find("#hp").text())
+                    $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
+                        "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
+                        "<div>HP  <div id='pokelife_1' class='progress-bar'></div></div>"))
+                    $(this).attr("meta-type", $(ui.draggable).find("#pokemon_types").children("td").last().text())
 
+                    setProgressbar("#pokelife_1", $(ui.draggable).find("#hp").text())
+                }else{
+                    $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
+                        "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
+                        "<div>HP  <div id='pokelife_2' class='progress-bar'></div></div>"))
+                    setProgressbar("#pokelife_2", $(ui.draggable).find("#hp").text())
+                }
 
                 $(this).removeClass("border").css({
                     borderStyle: "solid",
@@ -99,20 +134,15 @@ $(document).ready(function(){
         })
     }
 
-    function color_type(color){
-        $("#pokemon_card").css({
-            backgroundColor: color
-        })
-    }
-
     function setDraggable(obj){
         $(obj).draggable({
-            revert: true
+            revert: true,
+            disabled: false
         })
     }
 
     function setProgressbar(obj, max){
-        $(obj).children("div").addClass(".bg-success")
+        $(obj).children("div").addClass("bg-success")
         $(obj).progressbar({
             max: max,
             value: max-0.1,
