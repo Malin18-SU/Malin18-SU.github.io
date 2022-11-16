@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 
     $("#pokemon_content").hide()
-    $(".container-fight").hide()
+    $("#container-fight").hide()
+    $("#back").hide()
     names()
     setDroppable("#pokefight_container1")
     setDroppable("#pokefight_container2")
@@ -17,14 +18,42 @@ $(document).ready(function(){
             $(this).parent().css({
                 background: "url('/images/fight/" + $(this).parent().find("#pokefight_container1").attr("meta-type") + ".jpg') no-repeat center center fixed",
                 backgroundSize: "cover",
-                borderRadius: "8px"
+                borderRadius: "8px",
+                backdropFilter: "blur(5px)"
             })
+            setTimeout(fight, 1200)
         }
 
     })
 
     $("#pokemon_name").autocomplete({
         source: pokemon_names
+    })
+
+    $("#back").on("click", function(){
+        $("#pokemon_abilities").empty()
+        $("#pokemon_types").empty()
+        $("#pokemon_stats").empty()
+        $("#pokemon_stats_name").empty()
+        $("#pokemon_name").val("")
+        $("#pokemon_img").attr("src", "")
+        $("#pokemon_card").show()
+        $("#pokemon_content").show()
+        $("#pokemon_card").css({
+            backgroundColor: "black"
+        })
+        $("#pokefight_container1").empty()
+        $("#pokefight_container2").empty()
+        $("#btn-fight").show()
+        $(this).hide()
+
+        $("#container-fight").removeAttr("style")
+        $("#pokefight_container1").css({
+            backgroundColor: ""
+        })
+        $("#pokefight_container2").css({
+            backgroundColor: ""
+        })
     })
 
     $("#pokemon_name").on("change", function(){
@@ -54,7 +83,6 @@ $(document).ready(function(){
                 height: "100%"
             })
         })
-
 
         $.ajax({
             type: "GET",
@@ -113,18 +141,23 @@ $(document).ready(function(){
                         transform: "scaleX(-1)"
                     })
 
-                    $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
+                    $(this).append($("<div class='pokefight_content container bg-light text-dark border border-secondary rounded-1'>" +
                         "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
                         "<div>HP  <div id='pokelife_1' class='progress-bar'></div></div>"))
-                    $(this).attr("meta-type", $(ui.draggable).find("#pokemon_types").children("td").last().text())
 
+                    $(this).attr("meta-type", $(ui.draggable).find("#pokemon_types").children("td").last().text())
+                    $(this).attr("meta-attack", $(ui.draggable).find("#attack").text())
                     setProgressbar("#pokelife_1", $(ui.draggable).find("#hp").text())
                 }else{
-                    $(this).append($("<div class='container bg-light text-dark border border-secondary rounded-1'>" +
+                    $(this).append($("<div class='pokefight_content container bg-light text-dark border border-secondary rounded-1'>" +
                         "<h3 class='pokemon_fight_name'>" + $(ui.draggable).find("#pokemon_name").val().toUpperCase() + "</h3>" +
                         "<div>HP  <div id='pokelife_2' class='progress-bar'></div></div>"))
+
+                    $(this).attr("meta-attack", $(ui.draggable).find("#attack").text())
                     setProgressbar("#pokelife_2", $(ui.draggable).find("#hp").text())
                 }
+
+                $(".pokefight_content").hide()
 
                 $(this).removeClass("border").css({
                     borderStyle: "solid",
@@ -132,6 +165,64 @@ $(document).ready(function(){
                 })
             }
         })
+    }
+
+    function getWinner(obj){
+            $(obj).append("<h4 class='text-dark'>VINCITORE!</h4>")
+    }
+
+    function update_progressbar(){
+        let value = $(".progress-bar").attr("aria-valuenow")
+        let max = $(".progress-bar").attr("aria-valuemax")
+
+        $(".progress-bar").each(function(){
+            if(value/max*100 <= 75 && value/max*100 > 25){
+                $(this).children("div").addClass("bg-warning")
+            }
+            if(value/max*100 <= 25){
+                $(this).children("div").addClass("bg-danger")
+            }
+        })
+
+    }
+
+    function check_life_pokemon(){
+        if($("#pokelife_1").attr("aria-valuenow") > 0 && $("#pokelife_2").attr("aria-valuenow") > 0){
+            console.log( $("#pokelife_1").attr("aria-valuenow"))
+            console.log( $("#pokelife_2").attr("aria-valuenow"))
+            return true
+        }
+
+
+        return false
+    }
+
+    function fight(){
+
+            do{
+            //attack("#pokefight_container1", "#pokefight_container2")
+            //attack("#pokefight_container2", "#pokefight_container1")
+                $(this).delay(1000)
+            attack("#pokefight_container1", "#pokefight_container2")
+                $(this).delay(1000)
+            attack("#pokefight_container2", "#pokefight_container1")
+                update_progressbar()
+        }while(check_life_pokemon())
+
+        $("#back").show()
+    }
+
+    function attack(attacker, enemy){
+        let value = $(enemy).find(".progress-bar").attr("aria-valuenow")
+        let attack = parseInt($(attacker).attr("meta-attack"))
+        if($(attacker).find(".progress-bar").attr("aria-valuenow") <= 0)
+            return
+        console.log("Before: " + value + " " + attack + " " + $(enemy).find(".progress-bar").progressbar("value"))
+        $(enemy).find(".progress-bar").progressbar("value", value - attack)
+        //$(enemy).find(".progress-bar").attr("aria-valuenow", $(enemy).find(".progress-bar").attr("aria-valuenow") - attack)
+        console.log("Before: " + value + " " + attack + " " + $(enemy).find(".progress-bar").progressbar("value"))
+        if(value - attack <= 0)
+            getWinner(attacker)
     }
 
     function setDraggable(obj){
@@ -142,28 +233,17 @@ $(document).ready(function(){
     }
 
     function setProgressbar(obj, max){
-        $(obj).children("div").addClass("bg-success")
         $(obj).progressbar({
             max: max,
             value: max-0.1,
-
-            change: function(){
-                if($(obj).val()/max*100 <=75){
-                    $(obj).children("div").addClass("bg-warning")
-                }
-
-                if($(obj).val()/max*100 <=25){
-                    $(obj).children("div").addClass("bg-danger")
-                }
-            }
         })
-
+        $(obj).children("div").addClass("bg-success")
     }
 
     function animation_start_fight(){
         $("#pokemon_card").hide("slideUp")
         $("#btn-fight").hide("fade")
-        $(".container-fight").animate({
+        $("#container-fight").animate({
             minHeight: "90vh"
         })
 
@@ -175,10 +255,8 @@ $(document).ready(function(){
             top: "300px",
         })
 
+        $(".pokefight_content").show("fade")
 
-    }
-
-    function fight(){
 
     }
 
