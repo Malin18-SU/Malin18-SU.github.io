@@ -9,7 +9,7 @@ body, html{
 
 .bg {
     /* The image used */
-    background-image: url("/images/bg-window.jpg");
+    background-image: url("images/bg-window.jpg");
 
     /* Full height */
     height: 100%;
@@ -21,7 +21,7 @@ body, html{
 }
 
 .frame{
-    background-image: url("/images/frame.png");
+    background-image: url("images/frame.png");
     background-size: contain;
     background-repeat: no-repeat;
     object-fit: contain;
@@ -36,7 +36,7 @@ body, html{
 }
 
 .content{
-    background-image: url("/images/bg-chat.jpg");
+    background-image: url("images/bg-chat.jpg");
     background-size: contain;
     background-repeat: no-repeat;
 

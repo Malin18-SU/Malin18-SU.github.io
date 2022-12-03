@@ -1,7 +1,7 @@
 {
   "users" : [{
     "name" : "Gabriel",
-    "pic" : "/images/profile_pic/gabriel.png",
+    "pic" : "images/profile_pic/gabriel.png",
     "chat" : [{
       "id" : 1,
       "sender" : "Gabriel",
@@ -37,7 +37,7 @@
     {
       "id" : 1,
       "name" : "Samantha",
-      "pic" : "/images/profile_pic/samantha.jpg",
+      "pic" : "images/profile_pic/samantha.jpg",
       "chat" : [{
         "sender" : "you",
         "time" : "[09/11/22] 23:20",
@@ -47,7 +47,7 @@
     {
       "id" : 1,
       "name" : "Gino",
-      "pic" : "/images//profile_pic/gino.png",
+      "pic" : "images/profile_pic/gino.png",
       "chat" : [{
         "sender" : "you",
         "time" : "[10/11/22] 10:24",
