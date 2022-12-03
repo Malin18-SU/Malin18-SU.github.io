@@ -1,5 +1,7 @@
 $(document).ready(function(){
     let json_url = "chats.json"
+    let Timeout = []
+    let stop_chat = false
 
     setInterval(Time, 1000)
     load_app()
@@ -12,6 +14,8 @@ $(document).ready(function(){
 
     $(document).on("click", ".icon", function(){
         $(".icon").closest(".window").remove()
+        stop_chat = true
+        clearTimeout_msg(Timeout)
         $(".chats_window").show()
     })
 
@@ -37,8 +41,14 @@ $(document).ready(function(){
                         ' <div class="chat"></div>' +
                         '</div>')
 
-                    item.chat.forEach(function(msg){    //print every message
-                        setTimeout(function(){
+
+                    stop_chat = false
+                    item.chat.every(function(msg){    //print every message
+                        Timeout[msg.id] = setTimeout(function(){
+                            if(Timeout && stop_chat){       //doesn't allow to print messages of previous chats
+                                clearTimeout_msg(Timeout)
+                                return false
+                            }
                             $(".chat").append('<div id="' + msg.id + '" class="messageBox">' +
                                 '<div class="msg-sender">' + msg.sender + '</div>' +
                                 '<div class="msg-content">' + msg.content + '</div>' +
@@ -48,9 +58,9 @@ $(document).ready(function(){
                             if(msg.sender === "you"){       //if this is your message, add class "you"
                                 $(".chat").children("#" + msg.id).addClass("you")
                             }
-                            }, (msg.id-1) * 2000)
-                       })
-                    return      //stops the cycle
+                        }, (msg.id-1) * 2000)
+                        return true
+                    })
                 }
             })
         })
@@ -75,6 +85,15 @@ $(document).ready(function(){
         })
     }
 
+
+    //clear all timeout created for the messages
+    function clearTimeout_msg(Timeouts){
+        Timeouts.forEach(function(value){
+            window.clearTimeout(value)
+        })
+
+        Timeouts = []
+    }
 
     //refresh the clock time displayed
     function Time(){
