@@ -31,6 +31,30 @@
         "sender" : "Gabriel",
         "time" : "[10/11/22] 10:24",
         "content" : "Okk"
+      },
+      {
+        "id" : 6,
+        "sender" : "Gabriel",
+        "time" : "[10/11/22] 10:31",
+        "content" : "Aggiornamenti?"
+      },
+      {
+        "id" : 7,
+        "sender" : "you",
+        "time" : "[10/11/22] 10:32",
+        "content" : "Gino ha detto che è andata dallo zio, non so"
+      },
+      {
+        "id" : 8,
+        "sender" : "Gabriel",
+        "time" : "[10/11/22] 10:32",
+        "content" : "Cosa? Davvero? Grazie mille"
+      },
+      {
+        "id" : 9,
+        "sender" : "you",
+        "time" : "[10/11/22] 10:33",
+        "content" : "Figurati"
       }
     ]
   },
@@ -52,7 +76,38 @@
         "sender" : "you",
         "time" : "[10/11/22] 10:24",
         "content" : "Oi hai visto Samantha per caso?"
-      }]
+      },
+        {
+          "id" : 2,
+          "sender" : "Gino",
+          "time" : "[10/11/22] 10:27",
+          "content" : "Oh ei, ciao!"
+        },
+        {
+          "id" : 3,
+          "sender" : "Gino",
+          "time" : "[10/11/22] 10:27",
+          "content" : "Guarda, ieri sera mi ha detto che andava dallo zio Franco per qualche giorno"
+        },
+        {
+          "id" : 4,
+          "sender" : "Gino",
+          "time" : "[10/11/22] 10:28",
+          "content" : "Perché?"
+        },
+        {
+          "id" : 5,
+          "sender" : "you",
+          "time" : "[10/11/22] 10:30",
+          "content" : "Ah ok, no nulla non mi risponde ai messaggi, grazie"
+        }
+      ,{
+          "id" : 6,
+          "sender" : "Gino",
+          "time" : "[10/11/22] 10:31",
+          "image" : "images/ex.png",
+          "content" : "Va bene, figurati! Ci sentiamo"
+        }]
     }
   ]
 }

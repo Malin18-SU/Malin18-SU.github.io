@@ -7,18 +7,28 @@ $(document).ready(function(){
     load_app()
 
 
+
     $(document).on("click", "div.user > div", function(){
         $(".chats_window").hide()
         load_chat($(this).closest(".user").attr("data-name"))
     })
 
-    $(document).on("click", ".icon", function(){
+    $(document).on("click", "div .top-chat > .icon", function(){
         $(".icon").closest(".window").remove()
         stop_chat = true
         clearTimeout_msg(Timeout)
         $(".chats_window").show()
     })
 
+    $(document).on("click", "div .send > .icon", function(){
+        if($(".send-msg").val() !== "")
+        send_message({
+            sender: "you",
+            content: $(".send-msg").val(),
+            time: "[10/11/22] 10:33"
+        })
+        $(".send-msg").val("")
+    })
 
     //load the selected chat
     function load_chat(user){
@@ -26,7 +36,7 @@ $(document).ready(function(){
             data.users.forEach(function(item){      //check on every user
                 if(item.name === user){     //when finds the user's chat, it loads
                     $(".content").append('<div class="window">' +
-                        '   <div class="top-chat d-flex flex-wrap">' +
+                        '   <div class="top-chat d-flex flex-wrap color-secondary">' +
                         '       <div class="icon">' +
                         '               <img src="images/icons/back_arrow.svg">' +
                         '       </div>' +
@@ -39,25 +49,30 @@ $(document).ready(function(){
                         '                    </div>' +
                         '   </div>' +
                         ' <div class="chat"></div>' +
+                        ' <div class="bot-chat m-auto p-2 rounded d-flex flex-wrap color-main-2">' +
+                        '<input type="text" class="form-control send-msg w-75 color-main-1" placeholder="Scrivi un messaggio"</div>' +
+                        '<div class="w-25 send text-end"> ' +
+                        '<div class="icon">' +
+                        '<img src="images/icons/send.png">' +
+                        '</div>' +
+                        '</div>' +
                         '</div>')
-
-
+                    $(".send-msg").attr('disabled', 'disabled')
+                    $(".chat").scroll()
                     stop_chat = false
                     item.chat.every(function(msg){    //print every message
                         Timeout[msg.id] = setTimeout(function(){
-                            if(Timeout && stop_chat){       //doesn't allow to print messages of previous chats
+                            if((Timeout && stop_chat) || (msg.id === item.chat[item.chat.length-1].id)){       //doesn't allow to print messages of previous chats
                                 clearTimeout_msg(Timeout)
+                                $(".send-msg").removeAttr('disabled')
                                 return false
                             }
-                            $(".chat").append('<div id="' + msg.id + '" class="messageBox">' +
-                                '<div class="msg-sender">' + msg.sender + '</div>' +
-                                '<div class="msg-content">' + msg.content + '</div>' +
-                                '<div class="msg-time float-end">' + msg.time.substring(11) + '</div> ' +
-                                '</div>')
 
-                            if(msg.sender === "you"){       //if this is your message, add class "you"
-                                $(".chat").children("#" + msg.id).addClass("you")
+                            if(item.user === "Gabriel" && msg.id === 6){
+
                             }
+
+                            send_message(msg)
                         }, (msg.id-1) * 2000)
                         return true
                     })
@@ -65,6 +80,34 @@ $(document).ready(function(){
             })
         })
 
+    }
+
+    function send_message(msg){
+        $(".chat").append('<div id="' + msg.id + '" class="messageBox bg-light">')
+
+        if(msg.sender !== "you"){
+            $("#" + msg.id).append(
+                '<div class="msg-sender">' + msg.sender + '</div>'
+            )
+        }
+
+        if(msg.image){
+            $("#" + msg.id).append(
+                '<div class="msg-image"><img src="' + msg.image + '"></div>'
+            )
+        }
+
+        $("#" + msg.id).append(
+            '<div class="msg-content">' + msg.content + '</div>' +
+            '<div class="msg-time float-end">' + msg.time.substring(11) + '</div> ' +
+            '</div>')
+
+        if(msg.sender === "you"){       //if this is your message, add class "you"
+            $(".chat").children("#" + msg.id).addClass("you color-main").removeClass("bg-light")
+        }
+
+        $(".chat").animate({
+            scrollTop: $('.chat').prop("scrollHeight")}, 1000)
     }
 
     //load the selected chat
