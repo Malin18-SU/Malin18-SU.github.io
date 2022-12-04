@@ -86,9 +86,11 @@ $(document).ready(function(){
                     item.chat.every(function(msg){    //print every message
                      //   if(msg.id > start_msg){
                             Timeout[msg.id] = setTimeout(function(){
-                                if((Timeout && stop_chat) || (msg.id === item.chat[item.chat.length-1].id + 1)){       //doesn't allow to print messages of previous chats
-                                    clearTimeout_msg(Timeout)
+                                if((msg.id === item.chat[item.chat.length-1].id)){
                                     $(".send-msg").removeAttr('disabled')
+                                }
+                                if((Timeout && stop_chat)){       //doesn't allow to print messages of previous chats
+                                    clearTimeout_msg(Timeout)
                                     return false
                                 }
                                 $("." + user).attr("data-lastmsg", msg.id)
