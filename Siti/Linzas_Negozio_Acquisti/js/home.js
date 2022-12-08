@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.getJSON("../json/categories.json", function(data){
+    $.getJSON("json/categories.json", function(data){
         data.categories.forEach(function(category){
             $("#categories").append('<div class="card up shadow">' +
                 '<div class="card-header">' +

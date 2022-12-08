@@ -2,7 +2,7 @@ $(document).ready(function(){
 let category = new URLSearchParams(window.location.search).get('category')
 
 
-    $.getJSON("../json/products.json", function(data){
+    $.getJSON("json/products.json", function(data){
         let categories = data.categories[0]
         let keys = Object.keys(categories)
         console.log("keys: " + keys)
