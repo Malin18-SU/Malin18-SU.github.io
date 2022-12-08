@@ -1,29 +1,47 @@
 $(document).ready(function(){
-let category = new URLSearchParams(window.location.search).get('category')
+let data_categories = new URLSearchParams(window.location.search).get('category')
 
+    if(data_categories == null)
+        data_categories = ""
 
     $.getJSON("json/products.json", function(data){
         let categories = data.categories[0]
         let keys = Object.keys(categories)
         console.log("keys: " + keys)
         console.log("categories: " + categories)
-        for(let key of keys){
-                if(category === key || category == null) {
-                    categories[key].forEach(function (product) {
-                        $("#products").append('<div class="card up shadow">' +
-                            '<div class="card-header">' +
-                            '                <img id="c" class="card-img-top" src="' + product.img + ' " alt="Card image cap">' +
-                            '</div>' +
-                            '                <div class="card-body d-flex flex-column justify-content-center h-75 align-items-center">' +
-                            '                    <h5 class="card-title">' + product.name + '</h5>' +
-                            '                    <p class="card-text form-text h-25">' + product.description + '</p>' +
-                            '                    <input class="quantity rounded border-1 text-end w-25" type="number" max="' + product.quantity + '" min="0" value="1">' +
-                            '                    <p class="card-text form-text">prezzo: <span class="price">' + product.price + '</span>€</p>  ' +
-                            '                    <a class="btn btn-danger buy"><img class="icon w-25" src="img/icons/cart/add.png">Aggiungi al carrello</a>' +
-                            '                </div>' +
-                            '            </div>')
-                    })
+
+        for(let category of data_categories.split("-")){
+            for(let key of keys){
+                if(category === key || category === "") {
+                    if(categories[key].length === 0 && category != null && data_categories !== ""){
+                        $("#container").append(' <div class="no_result container d-flex flex-column justify-content-center align-items-center h-50 m-5">\n' +
+                            '                    <div class="opacity-50">\n' +
+                            '                        <img src="img/logo/logo_80.png">\n' +
+                            '                    </div>\n' +
+                            '                    <div class="text-dark font-weight-bold text-center">\n' +
+                            '                        <h4>Oh no! Sembra che non ci siano prodotti di questa categoria!</h4>\n' +
+                            '                        <h5 class="form-text">Torna in futuro!</h5>\n' +
+                            '                    </div>\n' +
+                            '                </div>')
+                    }else{
+                        categories[key].forEach(function (product) {
+                            $("#products").append('<div class="card up shadow" data-category="' + category + '">' +
+                                '<div class="card-header">' +
+                                '                <img id="c" class="card-img-top" src="' + product.img + ' " alt="Card image cap">' +
+                                '</div>' +
+                                '                <div class="card-body d-flex flex-column justify-content-center h-75 align-items-center">' +
+                                '                    <h5 class="card-title">' + product.name + '</h5>' +
+                                '                    <p class="card-text form-text h-25">' + product.description + '</p>' +
+                                '                    <input class="quantity rounded border-1 text-end w-25" type="number" max="' + product.quantity + '" min="0" value="1">' +
+                                '                    <p class="card-text form-text">prezzo: <span class="price">' + product.price + '</span>€</p>  ' +
+                                '                    <a class="btn btn-danger buy"><img class="icon w-25" src="img/icons/cart/add.png">Aggiungi al carrello</a>' +
+                                '                </div>' +
+                                '            </div>')
+
+                        })
+                    }
                 }
+            }
         }
     })
 
