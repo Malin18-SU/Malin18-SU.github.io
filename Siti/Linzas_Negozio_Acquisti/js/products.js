@@ -19,7 +19,7 @@ let category = new URLSearchParams(window.location.search).get('category')
                             '                    <p class="card-text form-text h-25">' + product.description + '</p>' +
                             '                    <input class="quantity rounded border-1 text-end w-25" type="number" max="' + product.quantity + '" min="0" value="1">' +
                             '                    <p class="card-text form-text">prezzo: <span class="price">' + product.price + '</span>€</p>  ' +
-                            '                    <a class="btn btn-danger buy"><img class="icon w-25" src="../img/icons/cart/add.png">Aggiungi al carrello</a>' +
+                            '                    <a class="btn btn-danger buy"><img class="icon w-25" src="img/icons/cart/add.png">Aggiungi al carrello</a>' +
                             '                </div>' +
                             '            </div>')
                     })

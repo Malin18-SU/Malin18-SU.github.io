@@ -52,7 +52,7 @@
 
             <select class="form-control form-select" name="sex">
                 <?php
-                if($_SESSION["sex"] === "F"){
+                if($_SESSION["sex"] == "F"){
                     echo "<option selected value='F'>F</option>";
                     echo "<option value='M'>M</option>";
                 }else{
