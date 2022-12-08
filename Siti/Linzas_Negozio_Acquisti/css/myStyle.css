@@ -1,0 +1,144 @@
+body{
+    background: url("/img/background/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body::after {
+    content: "";
+    background-color: black;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+.navbar .btn{
+    transition: 0.3s;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar .icon{
+    width: 60%;
+    height: auto;
+}
+
+.up{
+    transition: 0.3s;
+}
+
+.up:hover{
+    transition: 0.3s;
+    transform: translateY(-5%);
+}
+
+.down{
+    transition: 0.3s;
+}
+
+.card .btn{
+    transition: 0.3s;
+}
+
+.card .btn:hover{
+    transition: 0.3s;
+    transform: scale(105%);
+}
+.down:hover{
+    transition: 0.3s;
+    opacity: 0.5;
+    transform: translateY(10%);
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+
+.card{
+    width: 20%;
+}
+
+.card img{
+    width: 100px;
+}
+
+html,body{
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+.error {
+    color:red;
+}
+
+#prenotazioni_box{
+    position: relative;
+    width: 100%;
+
+}
+
+.ui-dialog{
+    position: fixed;
+}
+
+.ui-widget-overlay{
+    position: absolute;
+    height: 100%;
+}
+
+.ui-widget-content, .ui-dialog-title, .ui-dialog-titlebar, .ui-icon {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+    border: gray;
+    border-radius: 3px;
+    color: rgb(var(--bs-light-rgb));
+}
+
+.ui-corner-all{
+    border: none;
+}
+
+button.ui-button, .ui-widget-content .ui-state-default{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+button.ui-button, .ui-widget-content .ui-state-default:hover{
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+}
+
+div.ui-dialog-buttonpane .ui-button {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+#home{
+    height: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+.prenotazione {
+    width: fit-content;
+    height: fit-content;
+}
+
+.elimina{
+    justify-content: end;
+    width:100%;
+    height: fit-content;
+}
+
+#ncamere {
+    width: 60px;
+}
