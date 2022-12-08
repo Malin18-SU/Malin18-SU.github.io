@@ -16,7 +16,7 @@ $(document).ready(function(){
         if(check_fight_conditions()){
             animation_start_fight()
             $(this).parent().css({
-                background: "url('/images/fight/" + $(this).parent().find("#pokefight_container1").attr("meta-type") + ".jpg') no-repeat center center fixed",
+                background: "url('images/fight/" + $(this).parent().find("#pokefight_container1").attr("meta-type") + ".jpg') no-repeat center center fixed",
                 backgroundSize: "cover",
                 borderRadius: "8px",
                 backdropFilter: "blur(5px)"
@@ -66,7 +66,7 @@ $(document).ready(function(){
             backgroundColor: "black"
         })
 
-        if($("#pokemon_img").attr("src", "/images/404/error.gif")){
+        if($("#pokemon_img").attr("src", "images/404/error.gif")){
             $("#pokemon_card").draggable({disabled: true})
         }
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
         $("#pokemon_img").attr("src", "https://projectpokemon.org/images/normal-sprite/" + name + ".gif")
 
         $("#pokemon_img").on("error", function(){
-            $("#pokemon_img").attr("src", "/images/404/error.gif").css({
+            $("#pokemon_img").attr("src", "images/404/error.gif").css({
                 width: "100%",
                 height: "100%"
             })
