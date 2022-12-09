@@ -124,7 +124,7 @@ $_SESSION["ID"] = session_id();
                     <span>Non ti sei ancora registrato? <a href="signup.php">Registrati!</a></span>
                 </div>
 
-                <input type="submit" value="Accedi" class="btn btn-danger p-1">
+                <input type="submit" value="Accedi" class="btn btn-danger p-1 w-75">
             </form>
         </div>
     </div>

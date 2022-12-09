@@ -62,7 +62,7 @@
                     </label>
 
                 </div>
-                <input type="submit" value="Registrati" class="btn btn-danger p-1">
+                <input type="submit" value="Registrati" class="btn btn-danger p-1 w-75">
             </form>
         </div>
     </div>
