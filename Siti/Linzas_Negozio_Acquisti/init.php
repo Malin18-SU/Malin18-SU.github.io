@@ -3,7 +3,7 @@
 $location = explode("/", $_SERVER['PHP_SELF']);
 $location = end($location);
 if(!isset($_SESSION["name"]) && ($location != "login.php" && $location != "signup.php")){
-    echo("<script>location.href = 'signup.php';</script>");
+    echo("<script>location.href = 'login.php';</script>");
 }
 
 

@@ -9,10 +9,11 @@
 
     if($_POST){
         $file = fopen("accessi.txt", "a");
-        $text = $_POST["username"] ."," .$_POST["psw"] ."," .$_POST["name"] ."," .$_POST["surname"] ."," .$_POST["sex"];
+        $text = "\n" .$_POST["username"] ."," .$_POST["psw"] ."," .$_POST["name"] ."," .$_POST["surname"] ."," .$_POST["sex"];
         echo "$text <br>";
         fwrite($file, $text);
         fclose($file);
+        echo("<script>location.href = 'login.php';</script>");
     }
     ?>
 
@@ -29,7 +30,7 @@
             <h3 class="text-dark">FORM DI REGISTRAZIONE</h3>
 
             <!-- form e container dati personali del cliente che effettua la registrazione -->
-            <form action="login.php" class="m-auto form-floating w-25 text-dark" method="post">
+            <form action="signup.php" class="m-auto form-floating w-25 text-dark" method="post">
                 <div class="container m-auto p-1">
                     <label class="p-1">
                         Username:
