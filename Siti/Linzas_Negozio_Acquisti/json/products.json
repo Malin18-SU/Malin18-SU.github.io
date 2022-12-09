@@ -101,31 +101,31 @@
           "name": "Cheesecake New York!",
           "description": "Fresca, leggera, con un retrogusto di libertà!",
           "quantity": 10,
-          "price" : 0,
+          "price" : 2.50,
           "img": "img/prod/dolci/New-York-Cheesecake_360x300.webp"
         },{
           "name": "Pancakes allo Sciroppo d'Acero",
           "description": "Perfetti per una colazione a cuor sincero!",
           "quantity": 10,
-          "price" : 0,
+          "price" : 2.50,
           "img": "img/prod/dolci/Pancakes-allo-sciroppo-d-acero_360x300.webp"
         },{
           "name": "Panna Cotta",
           "description": "Una classica panna cotta!",
           "quantity": 10,
-          "price" : 0,
+          "price" : 2.50,
           "img": "img/prod/dolci/Panna-cotta_360x300.webp"
         },{
           "name": "Tiramisù",
           "description": "Come può non mancare il tiramisù? Un classico dolce italiano!",
           "quantity": 10,
-          "price" : 0,
+          "price" : 2.50,
           "img": "img/prod/dolci/Tiramisu_360x300.webp"
         },{
           "name": "La Torta della Nonna!",
           "description": "Preparato dalla nonna in persona! Sei pronto a dirle di si?",
           "quantity": 10,
-          "price" : 0,
+          "price" : 2.00,
           "img": "img/prod/dolci/Torta-della-nonna_360x300.webp"
         }
       ]

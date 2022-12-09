@@ -29,6 +29,10 @@ body::after {
     height: auto;
 }
 
+.navbar .btn-group .dropdown .dropdown-menu{
+    transform: translate(-12%, 10%);
+}
+
 .up{
     transition: 0.3s;
 }

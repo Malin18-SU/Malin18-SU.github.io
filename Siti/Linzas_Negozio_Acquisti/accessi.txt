@@ -1,2 +1,2 @@
-mariuanna@gmail.com,giova18,Maria Giovanna,Costanza,F
+mariuanna@gmail.com,giova18,MariaGiovanna,Costanza,F
 admin,admin,admin,admin,M

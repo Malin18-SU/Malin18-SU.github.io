@@ -35,8 +35,9 @@
             <input id="quantity" name="quantity" type="number" value="">
             <input id="price" name="price" type="number" value="">
         </form>
-        <div>
-
+        <div class="container d-flex justify-content-end align-items-center m-3 gap-2">
+            <input id="search_categories" type="search" class="form-control w-25" placeholder="Categorie">
+            <input id="search_categories_btn" type="button" class="btn btn-danger" value="Cerca">
         </div>
         <div id="products" class="d-flex flex-wrap justify-content-center m-1 p-1 gap-3">
     </div>

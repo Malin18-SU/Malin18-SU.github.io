@@ -35,6 +35,7 @@ $_SESSION["ID"] = session_id();
 
                     if($user[1] == $_POST["psw"]){
                         $found_psw = true;
+                        $_SESSION["username"] = $user[0];
                         $_SESSION["name"] = $user[2];
                         $_SESSION["surname"] = $user[3];
                         $_SESSION["sex"] = $user[4];
@@ -119,7 +120,10 @@ $_SESSION["ID"] = session_id();
                         Conferma password:
                         <input type="password" name="check_psw" class="form-control bg-light border-1 text-dark" required>
                     </label>
+
+                    <span>Non ti sei ancora registrato? <a href="signup.php">Registrati!</a></span>
                 </div>
+
                 <input type="submit" value="Accedi" class="btn btn-danger p-1">
             </form>
         </div>
