@@ -7,10 +7,10 @@
     
     <?php
 
-    if($_POST){
+    if($_POST){ //scrive su file i dati del nuovo profilo
         $file = fopen("accessi.txt", "a");
         $text = "\n" .$_POST["username"] ."," .$_POST["psw"] ."," .$_POST["name"] ."," .$_POST["surname"] ."," .$_POST["sex"];
-        echo "$text <br>";
+        //echo "$text <br>";
         fwrite($file, $text);
         fclose($file);
         echo("<script>location.href = 'login.php';</script>");

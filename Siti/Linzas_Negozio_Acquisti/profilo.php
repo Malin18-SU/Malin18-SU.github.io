@@ -6,7 +6,7 @@
     <title>Il Tuo Profilo</title>
 
    <?php
-   if($_POST){      //scrivere per aggiornare le variabili sul file
+   if($_POST){      //permette di aggiornare i dati del proprio profilo, modificandoli su file - updates profile data writing them on file
     $file = fopen("accessi.txt", "r");
     $all_text = "";
     while(!feof($file)){

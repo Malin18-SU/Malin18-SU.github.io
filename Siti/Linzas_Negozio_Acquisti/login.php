@@ -2,40 +2,39 @@
 //ob_start();
 include("init.php");
 
-$_SESSION["ID"] = session_id();
-
 ?>
 <html>
 <head>
     <title>Login</title>
 
     <?php
-    echo isset($_SESSION["name"]) ."<br>";
-    $found_user = true;
+    //echo isset($_SESSION["name"]) ."<br>";
+    $found_user = true;     //variabili per messaggi di errore per l'utente
     $found_psw = true;
     $check_psw = true;
+
     if($_POST){
         {
             $file = fopen("accessi.txt", "r") or die("Il file non è stato trovato");
 
-            while(!feof($file)){
-                $line = fgets($file);
+            while(!feof($file)){    //fino a quando non ha finito il file
+                $line = fgets($file);   //legge linea per linea
                 //echo $line ."<br>";
-                $user = explode(",", $line);
+                $user = explode(",", $line);    //separando le parole tramite le virgole
               /*  foreach($user as $key => $value){
                     echo "user $key=" .$value ."<br>";
                 }*/
-                if($user[0] == $_POST["username"]){
+                if($user[0] == $_POST["username"]){     //quando trova l'utente
                     $found_user = true;
-                    if($_POST["psw"] != $_POST["check_psw"]){
+                    if($_POST["psw"] != $_POST["check_psw"]){   //se password e conferma password non coincidono, restituisce un errore
                         //echo "wrong check: " .$_POST["psw"] ."- " .$_POST["check_psw"] ."<br>";
                         $check_psw = false;
                         break;
                     }
 
-                    if($user[1] == $_POST["psw"]){
-                        $found_psw = true;
-                        $_SESSION["username"] = $user[0];
+                    if($user[1] == $_POST["psw"]){  //e quando la password combacia
+                        $_SESSION["ID"] = session_id(); //salva il session ID
+                        $_SESSION["username"] = $user[0];           //salva le variabili e reindirizza alla home
                         $_SESSION["name"] = $user[2];
                         $_SESSION["surname"] = $user[3];
                         $_SESSION["sex"] = $user[4];
@@ -45,18 +44,18 @@ $_SESSION["ID"] = session_id();
         <!--<meta http-equiv = "refresh" content = "1; url = home.php">-->
 
                     <?php
-                    }else{
+                    }else{  //se la password non combacia
                         //echo "wrong password: $user[1] <br>";
                        $found_psw = false;
                        break;
                     }
-                }else{
+                }else{  //se non è stato trovato l'utente
                     //echo "wrong user: $user[0] <br>";
                     $found_user = false;
                 }
             }
             fclose($file);
-            if(!$found_user){
+            if(!$found_user){       //messaggio di errore
             ?>
             <script>
                 $(document).ready(function(){
@@ -65,7 +64,7 @@ $_SESSION["ID"] = session_id();
 
             </script>
         <?php
-            }else if(!$found_psw){
+            }else if(!$found_psw){      //messaggio di errore
         ?>
             <script>
                 $(document).ready(function(){
@@ -75,7 +74,7 @@ $_SESSION["ID"] = session_id();
         <?php
             }
 
-            if(!$check_psw && $found_user){
+            if(!$check_psw && $found_user){     //messaggio di errore
         ?>
                 <script>
                     $(document).ready(function(){

@@ -1,12 +1,14 @@
 $(document).ready(function(){
     get_products()
-    let sourcedata = ["antipasti", "primi", "secondi", "dolci", "caffè e bevande"]
+    let sourcedata = ["antipasti", "primi", "secondi", "dolci", "caffè e bevande"]      //per autocomplete(non riuscivo a farlo funzionare recuperando i valori direttamente dal json)
 
 
+    //autocomplete per la ricerca tramite categorie - autocomplete for the search by categories
     $("#search_categories").autocomplete({
         source:  sourcedata
     });
 
+    //invio della ricerca tramite categorie - button that start search by categories
     $("#search_categories_btn").on("click", function(){
         let keys = $("#search_categories").val().replace(" ", "").replace(",", "-");
         if(keys[keys.length-1] === "-")
@@ -15,10 +17,11 @@ $(document).ready(function(){
         location.href = "prodotti.php?category=" + keys;
     })
 
+    //visualizza a schermo i prodotti delle categorie scelte - print on screen all products of selected categories
     function get_products(){
-        let data_categories = new URLSearchParams(window.location.search).get('category')
+        let data_categories = new URLSearchParams(window.location.search).get('category')   //prende i parametri GET - gets GET parameters
 
-        if(data_categories == null)
+        if(data_categories == null) //se non ci sono parametri, uguaglia a "" per stampare tutti i prodotti - if null, equals "" to print all products
             data_categories = ""
 
         $.getJSON("json/products.json", function(data){
@@ -27,9 +30,12 @@ $(document).ready(function(){
             console.log("keys: " + keys)
             console.log("categories: " + categories)
 
-            for(let category of data_categories.split("-")){
-                for(let key of keys){
+            for(let category of data_categories.split("-")){    //esegue per ogni categoria, stampando a schermo le singole cards dei prodotti prelevate dal JSON
+                for(let key of keys){               //execute for every category in data_categories, printing on screen the single cards of the products in the JSON file
                     if(category === key || category === "") {
+
+                        //se non sono presenti prodotti nella singola categoria scelta, stampa una finestra apposita
+                        //if there are no products in the single chosen category, then it prints a specific div
                         if(categories[key].length === 0 && category != null && data_categories !== ""){
                             $("#container").append(' <div class="no_result container d-flex flex-column justify-content-center align-items-center h-50 m-5">\n' +
                                 '                    <div class="opacity-50">\n' +
@@ -63,6 +69,7 @@ $(document).ready(function(){
         })
     }
 
+    //quando si aggiunge un prodotto al carrello, si inviano i dati - if a product is added to cart, then the product is sent there
     $(document).on("click", ".buy", function() {
         //console.log("ci sono " + $(this).closest(".card").find(".card-img-top").attr("src"))
         $("#img").attr("value", $(this).closest(".card").find(".card-img-top").attr("src"))

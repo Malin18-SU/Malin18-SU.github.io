@@ -5,12 +5,7 @@
     <title>I NOSTRI PRODOTTI</title>
     <script src="js/products.js"></script>
     <?php
-    if($_POST){
-        if(isset($_SESSION["num_products"]))
-            $_SESSION["num_products"] += 1;
-       else
-           $_SESSION["num_products"] = 1;
-
+    if($_POST){     //il prodotto è inviato al carrello - the product is sent to the cart
         $_SESSION["cart"][$_POST["name"]] = ["img" => $_POST["img"], "quantity" => $_POST["quantity"], "price" => $_POST["price"]];
 
  /*      foreach($_SESSION["cart"] as $product => $name){

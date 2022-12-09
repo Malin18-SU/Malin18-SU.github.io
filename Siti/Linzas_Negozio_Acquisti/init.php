@@ -1,12 +1,34 @@
 <?php session_start();
 
+
+#############################################
+#   QUESTA PAGINA E' RICHIAMATA ALL'INIZIO  #
+#   DELLE ALTRE E CONTIENE LO SCRIPT        #
+#   NECESSARIO, QUALI LO START DELLA        #
+#   SESSIONE, ALCUNI CONTROLLI E LA NAVBAR  #
+#############################################
+#   THIS PAGE IS CALLED IN ALL THE OTHER    #
+#   PAGES AND CONTAINS THE NEEDED SCRIPT,   #
+#   WHICH ARE THE SESSION START, SOME       #
+#   CONTROLS AND THE NAVBAR BAR             #
+#############################################
+
 $location = explode("/", $_SERVER['PHP_SELF']);
-$location = end($location);
-if(!isset($_SESSION["name"]) && ($location != "login.php" && $location != "signup.php")){
+$location = end($location); //prende il nome del file in modo sicuro - gets filename safely
+
+//se non esiste una sessione valida e non si è sulla pagina di login o di registrazione, reindirizza a login.php
+//if there is no valid session and it's not in login or signup, redirect to login.php
+if(!isset($_SESSION["ID"]) && ($location != "login.php" && $location != "signup.php")){
     echo("<script>location.href = 'login.php';</script>");
 }
 
+//se esiste una sessione valida e si è sulla pagina di login o di registrazione, reindirizza a home.php
+//if there is a valid session and it's in login or signup, redirect to home.php
+if(isset($_SESSION["ID"]) && ($location == "login.php" || $location == "signup.php")){
+    echo("<script>location.href = 'home.php';</script>");
+}
 
+//imposta l'immagine del carrello - sets cart icon
 $cart_img = "img/icons/cart/cart.png";
 if(!empty($_SESSION["cart"])){
     $cart_img = "img/icons/cart/full.png";
@@ -42,9 +64,3 @@ if(!empty($_SESSION["cart"])){
   </div>
 </div>
 </body>
-
-
-<!-- TO DO
- ###categorie vuote
- ###registrazione
- ###commenti-->

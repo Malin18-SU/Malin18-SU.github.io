@@ -20,9 +20,10 @@
 
         }
 
-        $total_price = 0;
-        $total_quantity = 0;
+        $total_price = 0;       //visualizza il totale del prezzo dei prodotti - prints the summary bill to pay
+        $total_quantity = 0;    //visualizza la quantità di prodotti totale - prints how many products are being bought
 
+        //visualizza i prodotti nel carrello. Se vuoto, visualizza una finestra specifica - prints all products in cart. If empty, then prints a specific div
         function create_cart(){
             foreach($_SESSION["cart"] as $product => $value){
                 global $total_price;

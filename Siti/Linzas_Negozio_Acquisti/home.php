@@ -10,7 +10,7 @@ include("init.php");
 
 </head>
 <body>
-    <div class="bg-light container-fluid w-75 h-100 rounded m-auto">
+    <div class="bg-light container-fluid w-75 rounded m-auto" style="height: fit-content">
         <h2 class="text-start text-danger">Benvenut<?php
             if($_SESSION["sex"] == "M"){
                 echo "o ";

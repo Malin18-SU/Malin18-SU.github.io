@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    //visualizza le categorie disponibili - prints all categories
     $.getJSON("json/categories.json", function(data){
         data.categories.forEach(function(category){
             $("#categories").append('<div class="card up shadow">' +
