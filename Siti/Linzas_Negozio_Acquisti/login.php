@@ -108,12 +108,12 @@ $_SESSION["ID"] = session_id();
                 <div class="container m-auto p-1">
                     <label class="p-1">
                         Username:
-                        <input type="text" name="username" placeholder="admin" class="form-control bg-light border-1 text-dark" required>
+                        <input type="text" name="username" placeholder="<?php $text = explode(",", fgets(fopen("accessi.txt", "r"))); echo $text[0] ?>" class="form-control bg-light border-1 text-dark" required>
                     </label>
 
                     <label class="p-1">
                         Password:
-                        <input type="password" name="psw" placeholder="admin" class="form-control bg-light border-1 text-dark" required>
+                        <input type="password" name="psw" placeholder="<?php $text = explode(",", fgets(fopen("accessi.txt", "r"))); echo $text[1] ?>" class="form-control bg-light border-1 text-dark" required>
                     </label>
 
                     <label class="p-1">
