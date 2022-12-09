@@ -19,7 +19,7 @@ include("init.php");
 
         <div class="bg-opacity-10 text-center border rounded m-5">
             <h2 class="">Scegli cosa prendere!</h2>
-            <div id="categories" class="d-flex flex-wrap justify-content-center p-1 gap-5">
+            <div id="categories" class="d-flex flex-wrap justify-content-center gap-5">
 
             </div>
         </div>
