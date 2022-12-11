@@ -16,6 +16,13 @@
 $location = explode("/", $_SERVER['PHP_SELF']);
 $location = end($location); //prende il nome del file in modo sicuro - gets filename safely
 
+//timeout di mezz'ora per logout - 30min timeout logout
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_destroy();
+    session_unset();
+}
+$_SESSION['LAST_ACTIVITY'] = time(); //aggiorna l'ultima azione eseguita sulla pagina - update last activity time
+
 //se non esiste una sessione valida e non si è sulla pagina di login o di registrazione, reindirizza a login.php
 //if there is no valid session and it's not in login or signup, redirect to login.php
 if(!isset($_SESSION["ID"]) && ($location != "login.php" && $location != "signup.php")){
