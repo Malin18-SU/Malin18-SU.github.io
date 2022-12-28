@@ -1,7 +1,7 @@
 <?php
 session_start();
 ini_set('SMTP','ssl:smtp.gmail.com');
-ini_set('smtp_port',465);
+ini_set('smtp_port',587);
 ini_set('username', 'matteo.linzas@gmail.com');
 ini_set('password', 'AinzMatteo18');
 
