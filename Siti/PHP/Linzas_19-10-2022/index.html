@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+  <form method="post" action="script.php">
+    Operazione: <select name="sel">
+    <option value="1">+</option>
+    <option value="2">-</option>
+    <option value="3">/</option>
+    <option value="4">x</option>
+    <option value="5">^</option>
+  </select>
+    num1: <input type="text" name="num1">
+    num2: <input type="text" name="num2">
+    <input type="submit">
+  </form>
+</div>
+
+<div>
+  <form action="tabelline.php" method="post">
+    <table>
+      <tr>
+        <td> Primo addendo</td>
+        <td><input type="text" name="numero1"></td>
+      </tr>
+
+    </table>
+    <td><input type="submit" value="Genera"></td>
+  </form>
+
+</div>
+</body>
+</html>
