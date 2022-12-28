@@ -1,9 +1,9 @@
 <?php
 session_start();
-ini_set('SMTP','ssl://smtp.gmail.com');
-ini_set('smtp_port',587);
+/*ini_set('SMTP','ssl:smtp.gmail.com');
+ini_set('smtp_port',"465");
 ini_set('username', 'matteo.linzas@gmail.com');
-ini_set('password', 'AinzMatteo18');
+ini_set('password', 'AinzMatteo18');*/
 
 if($_POST){
     $file = fopen("file.txt", "a+");
@@ -34,7 +34,7 @@ if($_POST){
     if(mail($receiver, $mail_obj, $mail_body, $mail_headers)){
         echo "Messaggio inviato con successo\n";
         echo "user: " .$_SESSION["id"] . " psw: " .$_SESSION["psw"] ."<br>";
-    }else echo "Errore. \n";
+    }else echo "Error \n";
 
 }
 
