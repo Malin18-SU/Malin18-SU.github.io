@@ -1,0 +1,138 @@
+{
+  "categories": [{
+    "antipasti": [{
+      "name": "Focaccia alla Genovese",
+      "description": "Deliziosissima e preparata da zia Anna, originaria della liguria!",
+      "quantity": 10,
+      "price" : 2.99,
+      "img": "img/prod/antipasti/Focaccia-fugassa-alla-genovese_360x300.webp"
+    },{
+      "name": "Arancini di riso",
+      "description": "I migliori di tutta la Sicilia!",
+      "quantity": 10,
+      "price" : 2.99,
+      "img": "img/prod/antipasti/Arancini-di-riso_360x300.jpg"
+    },{
+      "name": "Hummus",
+      "description": "Semplicemente hummus, un gusto più che unico e per chi vuole qualcosa di diverso!",
+      "quantity": 10,
+      "price" : 2.99,
+      "img": "img/prod/antipasti/Hummus_360x300.webp"
+    },{
+      "name": "Mozzarella in carrozza",
+      "description": "Come possono non mancare le nostre mozzarelle in carrozza? Non possono!",
+      "quantity": 10,
+      "price" : 3.50,
+      "img": "img/prod/antipasti/Mozzarella-in-carrozza_360x300.jpg"
+    },{
+      "name": "Panzerotti fritti",
+      "description": "Impossibile resistergli!",
+      "quantity": 10,
+      "price" : 3.50,
+      "img": "img/prod/antipasti/Panzerotti-calzoni-fritti_360x300.webp"
+    },{
+      "name": "Ravioli cinesi al vapore",
+      "description": "Accettiamo anche le culture più lontane! Un piatto è sempre buono se preparato con amore!",
+      "quantity": 10,
+      "price" : 2.99,
+      "img": "img/prod/antipasti/Ravioli-cinesi-al-vapore_360x300.webp"
+    }
+    ]
+  ,
+    "primi": [
+      {
+        "name": "Gnocchi alla Romana",
+        "description": "Gnocchi Tipici della nostra Capitale Italiana!",
+        "quantity": 10,
+        "price" : 3.99,
+        "img": "img/prod/primi/Gnocchi-alla-romana_360x300.webp"
+      },{
+        "name": "Lasagne alla Bolognese",
+        "description": "Perchè non provare le nostre lasagne alla bolognese?",
+        "quantity": 10,
+        "price" : 3.99,
+        "img": "img/prod/primi/Lasagne-alla-Bolognese_360x300.webp"
+      },{
+        "name": "Pasta alla Grijcia",
+        "description": "Una pasta che porta a lontani ricordi...",
+        "quantity": 10,
+        "price" : 3.99,
+        "img": "img/prod/primi/Pasta-alla-gricia_360x300.webp"
+      },{
+        "name": "Spaghetti all'Amatriciana",
+        "description": "Come si può dire di no ad un'Amatriciana? Eddai!",
+        "quantity": 10,
+        "price" : 3.99,
+        "img": "img/prod/primi/Spaghetti-all-Amatriciana_360x300.webp"
+      },{
+        "name": "Spaghetti alla Carbonara",
+        "description": "Non c'è piatto più divino che la carbonara nel tuo pancino!",
+        "quantity": 10,
+        "price" : 3.99,
+        "img": "img/prod/primi/Spaghetti-alla-Carbonara_360x300.webp"
+      }
+    ]
+
+   ,
+      "secondi": [
+        {
+          "name": "Chili di Carne",
+          "description": "Un chili umile a base di carne",
+          "quantity": 10,
+          "price" : 3.50,
+          "img": "img/prod/secondi/Chili-con-carne_360x300.webp"
+        },{
+          "name": "Parmigiana di Melanzane",
+          "description": "La classica parmigiana amata da tutti!",
+          "quantity": 10,
+          "price" : 2.99,
+          "img": "img/prod/secondi/Parmigiana-di-melanzane_360x300.webp"
+        },{
+          "name": "Polpette della Nonna",
+          "description": "Non si rifiuta mai una polpetta della nonna!",
+          "quantity": 10,
+          "price" : 2.99,
+          "img": "img/prod/secondi/Polpette-al-sugo_360x300.webp"
+        }
+      ]
+    ,
+      "dolci": [
+        {
+          "name": "Cheesecake New York!",
+          "description": "Fresca, leggera, con un retrogusto di libertà!",
+          "quantity": 10,
+          "price" : 2.50,
+          "img": "img/prod/dolci/New-York-Cheesecake_360x300.webp"
+        },{
+          "name": "Pancakes allo Sciroppo d'Acero",
+          "description": "Perfetti per una colazione a cuor sincero!",
+          "quantity": 10,
+          "price" : 2.50,
+          "img": "img/prod/dolci/Pancakes-allo-sciroppo-d-acero_360x300.webp"
+        },{
+          "name": "Panna Cotta",
+          "description": "Una classica panna cotta!",
+          "quantity": 10,
+          "price" : 2.50,
+          "img": "img/prod/dolci/Panna-cotta_360x300.webp"
+        },{
+          "name": "Tiramisù",
+          "description": "Come può non mancare il tiramisù? Un classico dolce italiano!",
+          "quantity": 10,
+          "price" : 2.50,
+          "img": "img/prod/dolci/Tiramisu_360x300.webp"
+        },{
+          "name": "La Torta della Nonna!",
+          "description": "Preparato dalla nonna in persona! Sei pronto a dirle di si?",
+          "quantity": 10,
+          "price" : 2.00,
+          "img": "img/prod/dolci/Torta-della-nonna_360x300.webp"
+        }
+      ]
+    ,
+      "caffè e bevande": [
+
+      ]
+    }
+  ]
+}
