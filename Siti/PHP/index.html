@@ -11,19 +11,27 @@
 
         .btn:hover{
             transition: 0.3s;
-            #transform: scale(150%);
-            transform: translateY(-30%);
+            transform: translateY(-30%) scale(110%);
+            background: linear-gradient(to bottom, #660066 0%, #000099 78%);
+        }
+        .gradient{
+            background: linear-gradient(to bottom, #cc00ff 0%, #000000 78%);
+        }
+
+        .btn{
+            background: linear-gradient(to bottom, #000099 0%, #660066 78%);
+            border: none;
         }
 
     </style>
 </head>
 
-<body class="bg-dark bg-gradient">
+<body class="gradient">
 <div class="">
     <h1 class="text-start text-light">Indexer PHP</h1>
 </div>
 
-<div class="container w-75 h-50 text-center bg-dark rounded-1 d-flex flex-wrap gap-3 justify-content-center align-items-center">
+<div class="container w-75 h-50 text-center bg-dark rounded-1 d-flex flex-wrap gap-3 justify-content-center align-items-center bg-opacity-25">
     <a href="https://malin18-su.azurewebsites.net/Siti/PHP/es/esercizio1/prov.php" ><input type="button" value="Esercizio 1" class="btn btn-dark"></a>
     <a href="https://malin18-su.azurewebsites.net/Siti/PHP/es/esercizio2/index.php"><input type="button" value="Esercizio 2" class="btn btn-dark"></a>
     <a href="https://malin18-su.azurewebsites.net/Siti/PHP/es/esercizio3/index.php"><input type="button" value="Esercizio 3" class="btn btn-dark"></a>
