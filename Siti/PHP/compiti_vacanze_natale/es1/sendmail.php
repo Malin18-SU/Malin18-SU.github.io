@@ -1,9 +1,10 @@
 <?php
 session_start();
-ini_set('SMTP','ssl:smtp.gmail.com');
+
+/*ini_set('SMTP','ssl:smtp.gmail.com');
 ini_set('smtp_port',"465");
 ini_set('username', 'Matteo');
-ini_set('password', 'zsxvuqfwmppdvkte');
+ini_set('password', 'zsxvuqfwmppdvkte');*/
 
 if($_POST){
     $file = fopen("file.txt", "a+");
