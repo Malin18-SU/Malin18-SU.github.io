@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*ini_set('SMTP','ssl:smtp.gmail.com');
-ini_set('smtp_port',"465");
-ini_set('username', 'matteo.linzas@gmail.com');
-ini_set('password', 'AinzMatteo18');*/
+ini_set('SMTP','smtp.mandrillapp.com');
+ini_set('smtp_port',"587");
+ini_set('username', 'Matteo');
+ini_set('password', 'md-AIvA_0p7xLEIPUk14poVkQ');
 
 if($_POST){
     $file = fopen("file.txt", "a+");
