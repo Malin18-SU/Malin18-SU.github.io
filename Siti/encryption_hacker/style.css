@@ -1,0 +1,10 @@
+body{
+    background-image: url('img/bg/bg.gif');
+    background-repeat: no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.text-hacker{
+    color: #39ff14!important;
+}
