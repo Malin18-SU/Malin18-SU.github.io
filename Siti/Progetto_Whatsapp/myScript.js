@@ -57,7 +57,7 @@ $(document).ready(function(){
 
                    // if(!stop_load){
                         $(".content").append('<div id ="' + user + '" class="window ' + user + '" data-lastmsg="0">' +
-                            '   <div class="top-chat d-flex flex-wrap color-secondary">' +
+                            '   <div class="top-\ d-flex flex-wrap color-secondary">' +
                             '       <div class="icon">' +
                             '               <img src="images/icons/back_arrow.svg">' +
                             '       </div>' +
